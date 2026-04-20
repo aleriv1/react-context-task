@@ -1,0 +1,20 @@
+.button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  background: #f0f2f8;
+  color: #4a4f63;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.buttonActive {
+  background: linear-gradient(120deg, #7c72ff, #5c6cff);
+  color: #fff;
+}
