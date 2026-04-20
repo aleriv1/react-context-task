@@ -114,9 +114,7 @@ function App() {
           });
         break;
       }
-      // default: {
-      //   return state;
-      // }
+      default: break
     }
   };
 
