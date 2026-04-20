@@ -3,14 +3,7 @@ import styles from "./Todo.module.scss";
 import { useContext } from "react";
 import { TodosContext } from "../context";
 
-export const Todo = ({
-  todoLabel,
-  id,
-  editing,
-  editTodo,
-  deleteTodo,
-  changeTodoLabel,
-}) => {
+export const Todo = ({ todoLabel, id, editing }) => {
   const [todoLabelInput, setTodoLabelInput] = useState(todoLabel);
 
   const { dispatch } = useContext(TodosContext);
@@ -27,7 +20,6 @@ export const Todo = ({
       return;
     }
 
-    // changeTodoLabel(id, trimmedValue);
     dispatch({
       type: "CHANGE_TODO_LABEL",
       payload: { id, todoLabelInput: trimmedValue },
@@ -39,7 +31,6 @@ export const Todo = ({
   };
 
   const toggleEditing = () => {
-    // editTodo(id, !editing);
     dispatch({ type: "EDIT_TODO", payload: { id, editingState: !editing } });
   };
 
@@ -58,7 +49,6 @@ export const Todo = ({
             </button>
             <button
               className={styles.icon}
-              // onClick={() => deleteTodo(id)}
               onClick={() => dispatch({ type: "DELETE_TODO", payload: id })}
               type="button"
             >
