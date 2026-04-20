@@ -1,16 +1,13 @@
+import { TodosContext } from "../context";
 import { Todo } from "../Todo/Todo";
 import styles from "./TodoList.module.scss";
+import { useContext } from "react";
 
-export const TodoList = ({
-  todos,
-  // editTodo,
-  // deleteTodo,
-  // changeTodoLabel,
-  searchQuery,
-  isSortEnabled,
-}) => {
+export const TodoList = ({ debouncedQuery }) => {
+  const { todos, isSortEnabled } = useContext(TodosContext);
+
   const filtered = todos.filter(({ todoLabel }) => {
-    return todoLabel.toLowerCase().includes(searchQuery);
+    return todoLabel.toLowerCase().includes(debouncedQuery);
   });
 
   const prepared = isSortEnabled
@@ -20,13 +17,7 @@ export const TodoList = ({
   return prepared.length ? (
     <ul className={styles.list}>
       {prepared.map((todo) => (
-        <Todo
-          key={todo.id}
-          {...todo}
-          // editTodo={editTodo}
-          // deleteTodo={deleteTodo}
-          // changeTodoLabel={changeTodoLabel}
-        />
+        <Todo key={todo.id} {...todo} />
       ))}
     </ul>
   ) : (
